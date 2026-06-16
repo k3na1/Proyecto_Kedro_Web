@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriVida — Predictor de Salud Alimenticia</title>
+  <meta name="description" content="Analiza tu riesgo de diabetes tipo 2 con nuestro predictor basado en inteligencia artificial. Introduce tus datos de salud y recibe una evaluación personalizada." />
+  <meta name="keywords" content="salud, nutrición, diabetes, predictor, IMC, glucosa, bienestar" />
+  <meta name="author" content="NutriVida" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav" id="mainNav" aria-label="Navegación principal">
+    <div class="container nav__inner">
+      <a href="#" class="nav__brand" aria-label="NutriVida Inicio">
+        <span class="nav__logo" aria-hidden="true"></span>
+        <span class="nav__name">NutriVida</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#predictor" class="nav__link">Predictor</a></li>
+        <li><a href="#results" class="nav__link">Resultados</a></li>
+        <li><a href="#" class="nav__link">Metodología</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ Hero Section ═══ -->
+  <header class="hero" id="hero">
+    <div class="hero__content">
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+        <span class="hero__eyebrow-text">Predicción Inteligente</span>
+      </div>
+
+      <h1 class="hero__title">
+        Conoce tu salud,<br />
+        transforma tu <em>vida</em>
+      </h1>
+
+      <p class="hero__subtitle">
+        Analiza tus indicadores clave y obtén una evaluación personalizada de riesgo de diabetes tipo 2, respaldada por modelos de inteligencia artificial.
+      </p>
+
+      <a href="#predictor" class="hero__cta" id="heroCta">
+        Evaluar mi salud
+        <span class="hero__cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__visual-art">
+        <div class="hero__visual-circle"></div>
+        <div class="hero__visual-circle"></div>
+        <div class="hero__visual-circle"></div>
+      </div>
+    </div>
+
+    <span class="hero__vertical-text" aria-hidden="true">Bienestar · Nutrición · Ciencia</span>
+  </header>
+
+  <!-- ═══ Stats Strip ═══ -->
+  <section class="stats" aria-label="Estadísticas destacadas">
+    <div class="container stats__inner">
+      <div class="stats__item">
+        <div class="stats__number" data-target="537" data-suffix="M">0</div>
+        <div class="stats__label">Personas con diabetes</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__number" data-target="46" data-suffix="%">0</div>
+        <div class="stats__label">Sin diagnosticar</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__number" data-target="90" data-suffix="%">0</div>
+        <div class="stats__label">Casos prevenibles</div>
+      </div>
+      <div class="stats__item">
+        <div class="stats__number" data-target="3" data-suffix="min">0</div>
+        <div class="stats__label">Tiempo de análisis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Predictor Section ═══ -->
+  <section class="predictor" id="predictor" aria-labelledby="predictorTitle">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="predictor__header reveal">
+        <div>
+          <div class="predictor__label">
+            <span class="predictor__label-line" aria-hidden="true"></span>
+            <span class="predictor__label-text">Predictor de Salud</span>
+          </div>
+          <h2 class="predictor__title" id="predictorTitle">
+            Tu análisis de riesgo<br />comienza aquí
+          </h2>
+        </div>
+        <p class="predictor__description">
+          Completa los campos con tus datos de salud más recientes. Nuestro modelo analiza factores clave asociados al riesgo de diabetes tipo 2 para ofrecerte una evaluación orientativa.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form class="form reveal" id="predictorForm" novalidate>
+
+        <!-- ── Sección 1: Datos Personales ── -->
+        <fieldset class="form__section">
+          <legend class="form__section-legend">
+            <span class="form__section-icon" aria-hidden="true">👤</span>
+            Datos Personales
+          </legend>
+
+          <div class="form__grid form__grid--2col">
+
+            <!-- Edad biológica → RIDAGEYR -->
+            <div class="form__group">
+              <label for="fieldAge" class="form__label">
+                ¿Cuál es tu edad biológica? <span class="form__hint">(años)</span>
+              </label>
+              <input
+                type="number"
+                id="fieldAge"
+                name="age"
+                class="form__input"
+                placeholder="Ej: 34"
+                min="1"
+                max="120"
+                required
+                autocomplete="off"
+              />
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+            <!-- Sexo biológico → RIAGENDR -->
+            <div class="form__group">
+              <label for="fieldSex" class="form__label">
+                ¿Cuál es tu sexo biológico?
+              </label>
+              <select
+                id="fieldSex"
+                name="sex"
+                class="form__select"
+                required
+              >
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="1">Hombre</option>
+                <option value="2">Mujer</option>
+              </select>
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- ── Sección 2: Medidas Físicas ── -->
+        <fieldset class="form__section">
+          <legend class="form__section-legend">
+            <span class="form__section-icon" aria-hidden="true">📏</span>
+            Medidas Físicas
+          </legend>
+
+          <div class="form__grid form__grid--3col">
+
+            <!-- Estatura -->
+            <div class="form__group">
+              <label for="fieldHeight" class="form__label">
+                Estatura <span class="form__hint">(cm)</span>
+              </label>
+              <input
+                type="number"
+                id="fieldHeight"
+                name="height"
+                class="form__input"
+                placeholder="Ej: 175"
+                min="50"
+                max="250"
+                required
+                autocomplete="off"
+              />
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+            <!-- Peso -->
+            <div class="form__group">
+              <label for="fieldWeight" class="form__label">
+                Peso <span class="form__hint">(kg)</span>
+              </label>
+              <input
+                type="number"
+                id="fieldWeight"
+                name="weight"
+                class="form__input"
+                placeholder="Ej: 80"
+                step="0.1"
+                min="20"
+                max="300"
+                required
+                autocomplete="off"
+              />
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+            <!-- Perímetro de cintura → BMXWAIST -->
+            <div class="form__group">
+              <label for="fieldWaist" class="form__label">
+                Perímetro de cintura <span class="form__hint">(cm)</span>
+              </label>
+              <input
+                type="number"
+                id="fieldWaist"
+                name="waist"
+                class="form__input"
+                placeholder="Ej: 85"
+                step="0.1"
+                min="40"
+                max="200"
+                required
+                autocomplete="off"
+              />
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+        <!-- ── Sección 3: Resultados de Laboratorio ── -->
+        <fieldset class="form__section">
+          <legend class="form__section-legend">
+            <span class="form__section-icon" aria-hidden="true">🩸</span>
+            Resultados de Laboratorio
+          </legend>
+          <p class="form__section-desc">Datos de tu check-up médico más reciente.</p>
+
+          <div class="form__grid form__grid--3col">
+
+            <!-- Glucosa en ayunas → LBXSGL -->
+            <div class="form__group">
+              <label for="fieldGlucose" class="form__label">
+                Glucosa en ayunas <span class="form__hint">(mg/dL)</span>
+              </label>
+              <input
+                type="number"
+                id="fieldGlucose"
+                name="glucose"
+                class="form__input"
+                placeholder="Ej: 95"
+                min="30"
+                max="500"
+                required
+                autocomplete="off"
+              />
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+            <!-- Triglicéridos → se convierte a LBDSTRSI (mmol/L) -->
+            <div class="form__group">
+              <label for="fieldTriglycerides" class="form__label">
+                Triglicéridos <span class="form__hint">(mg/dL)</span>
+              </label>
+              <input
+                type="number"
+                id="fieldTriglycerides"
+                name="triglycerides"
+                class="form__input"
+                placeholder="Ej: 150"
+                min="20"
+                max="1000"
+                required
+                autocomplete="off"
+              />
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+            <!-- Colesterol HDL → LBDHDD -->
+            <div class="form__group">
+              <label for="fieldHdl" class="form__label">
+                Colesterol HDL <span class="form__hint">(mg/dL)</span>
+              </label>
+              <input
+                type="number"
+                id="fieldHdl"
+                name="hdl"
+                class="form__input"
+                placeholder="Ej: 55"
+                min="10"
+                max="150"
+                required
+                autocomplete="off"
+              />
+              <span class="form__focus-line" aria-hidden="true"></span>
+            </div>
+
+          </div>
+
+          <!-- Presión arterial: sistólica / diastólica -->
+          <div class="form__bp-group">
+            <span class="form__label form__bp-title">
+              Presión arterial <span class="form__hint">(mmHg)</span>
+            </span>
+            <div class="form__bp-fields">
+              <div class="form__group">
+                <label for="fieldSystolic" class="form__label form__label--small">
+                  Sistólica
+                </label>
+                <input
+                  type="number"
+                  id="fieldSystolic"
+                  name="systolic"
+                  class="form__input"
+                  placeholder="Ej: 120"
+                  min="60"
+                  max="250"
+                  required
+                  autocomplete="off"
+                />
+                <span class="form__focus-line" aria-hidden="true"></span>
+              </div>
+              <span class="form__bp-separator" aria-hidden="true">/</span>
+              <div class="form__group">
+                <label for="fieldDiastolic" class="form__label form__label--small">
+                  Diastólica
+                </label>
+                <input
+                  type="number"
+                  id="fieldDiastolic"
+                  name="diastolic"
+                  class="form__input"
+                  placeholder="Ej: 80"
+                  min="30"
+                  max="150"
+                  required
+                  autocomplete="off"
+                />
+                <span class="form__focus-line" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <!-- Actions -->
+        <div class="form__actions">
+          <button type="submit" class="form__submit" id="submitBtn">
+            Analizar riesgo
+            <span class="form__submit-icon" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="form__reset" id="resetBtn">
+            Limpiar campos
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ═══ Results Section ═══ -->
+  <section class="results" id="results" aria-labelledby="resultsTitle">
+    <div class="results__container">
+
+      <div class="results__panel">
+
+        <!-- State: Idle -->
+        <div class="results__idle" id="resultsIdle">
+          <div class="results__idle-icon" aria-hidden="true">⏳</div>
+          <p class="results__idle-title" id="resultsTitle">Esperando datos</p>
+          <p class="results__idle-text">
+            Completa el formulario y presiona «Analizar riesgo» para ver tu predicción.
+          </p>
+        </div>
+
+        <!-- State: Loading -->
+        <div class="results__loading" id="resultsLoading" aria-live="polite">
+          <div class="results__spinner" aria-hidden="true"></div>
+          <p class="results__loading-text">Procesando tu análisis…</p>
+        </div>
+
+        <!-- State: Result -->
+        <div class="results__card" id="resultsCard" aria-live="polite">
+
+          <div class="results__card-header">
+            <span class="results__card-label">Resultado del análisis</span>
+            <span class="results__card-timestamp" id="resultTimestamp"></span>
+          </div>
+
+          <div class="results__risk">
+            <div class="results__risk-indicator">
+              <div class="results__risk-circle" id="riskCircle" data-risk="low">
+                <span class="results__risk-value" id="riskValue">0%</span>
+              </div>
+            </div>
+            <div class="results__risk-info">
+              <h3 class="results__risk-level" id="riskLevel">Riesgo Bajo</h3>
+              <p class="results__risk-description" id="riskDescription"></p>
+            </div>
+          </div>
+
+          <div class="results__metrics results__metrics--6">
+            <div class="results__metric">
+              <div class="results__metric-value" id="metricBmi">—</div>
+              <div class="results__metric-label">IMC</div>
+            </div>
+            <div class="results__metric">
+              <div class="results__metric-value" id="metricGlucose">—</div>
+              <div class="results__metric-label">Glucosa</div>
+            </div>
+            <div class="results__metric">
+              <div class="results__metric-value" id="metricTriglycerides">—</div>
+              <div class="results__metric-label">Triglicéridos</div>
+            </div>
+            <div class="results__metric">
+              <div class="results__metric-value" id="metricHdl">—</div>
+              <div class="results__metric-label">HDL</div>
+            </div>
+            <div class="results__metric">
+              <div class="results__metric-value" id="metricSystolic">—</div>
+              <div class="results__metric-label">P. Sistólica</div>
+            </div>
+            <div class="results__metric">
+              <div class="results__metric-value" id="metricDiastolic">—</div>
+              <div class="results__metric-label">P. Diastólica</div>
+            </div>
+          </div>
+
+          <div class="results__disclaimer">
+            <strong>Aviso:</strong> Esta herramienta es orientativa y no reemplaza el diagnóstico médico profesional. Consulta siempre a un especialista de la salud.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-name">NutriVida</div>
+          <p class="footer__brand-desc">
+            Herramienta de análisis predictivo de salud alimenticia. Combinamos ciencia de datos e inteligencia artificial para empoderar decisiones de bienestar.
+          </p>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Plataforma</div>
+          <ul class="footer__links">
+            <li><a href="#predictor" class="footer__link">Predictor</a></li>
+            <li><a href="#" class="footer__link">Metodología</a></li>
+            <li><a href="#" class="footer__link">Investigación</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Recursos</div>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Blog</a></li>
+            <li><a href="#" class="footer__link">Guías</a></li>
+            <li><a href="#" class="footer__link">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Legal</div>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Privacidad</a></li>
+            <li><a href="#" class="footer__link">Términos</a></li>
+            <li><a href="#" class="footer__link">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 NutriVida. Todos los derechos reservados.</span>
+        <span>Hecho con ciencia y propósito.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="app.js"></script>
+</body>
+</html>
