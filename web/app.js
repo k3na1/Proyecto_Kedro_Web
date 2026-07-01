@@ -8,9 +8,7 @@
 // ─── API Configuration ─────────────────────────
 // Dynamically resolve API URL based on current host.
 // In production, change the port or path to match your deployment.
-const API_HOST = window.location.hostname || "localhost";
-const API_PORT = 8000;
-const API_URL = `http://${API_HOST}:${API_PORT}/predict`;
+const API_URL = "https://nutrivida-backend-ut3e.onrender.com/predict";
 
 // ─── DOM References ────────────────────────────
 const DOM = {
